@@ -13,6 +13,12 @@ Aplikace běží na **http://127.0.0.1:4321** (dev server naslouchá na `0.0.0.0
 
 Pro Cloud Agent Preview: pokud Preview hlásí `ERR_EMPTY_RESPONSE`, ověřte port **4321** v nastavení port forwardu.
 
+## Windows / Git Bash
+
+- Spouštějte `npm` **jen uvnitř kořene repozitáře** (složka s `package-lock.json` projektu).
+- Používejte `npm ci` a pak `npm run dev` — **ne** `npx next dev` (může stáhnout Next.js 16 mimo lockfile).
+- Pokud Next/Turbopack hlásí lockfile v domovském adresáři (`C:\Users\…\package-lock.json` nebo `~/package-lock.json`), smažte ten omylem vytvořený soubor; kořen projektu je nastaven v `next.config.ts` (`turbopack.root`).
+
 ## Produkční build
 
 ```bash
