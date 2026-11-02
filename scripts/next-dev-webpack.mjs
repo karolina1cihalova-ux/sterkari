@@ -10,7 +10,7 @@ const require = createRequire(import.meta.url);
 const { version } = require("next/package.json");
 const major = Number.parseInt(version.split(".")[0], 10);
 
-const args = ["dev", "-p", "4321", "-H", "0.0.0.0"];
+const args = ["dev", "-p", "4321", "-H", "127.0.0.1"];
 if (major >= 16) {
   args.push("--webpack");
 }

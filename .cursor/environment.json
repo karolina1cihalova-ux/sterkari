@@ -1,5 +1,5 @@
 {
   "install": "npm ci",
-  "start": "npm run build && exec npm start",
+  "start": "npm run build && exec npm run start:cloud",
   "ports": [{ "name": "web", "port": 4321 }]
 }
