@@ -1,0 +1,5 @@
+{
+  "install": "npm ci",
+  "start": "npm run build && exec npm start",
+  "ports": [{ "name": "web", "port": 4321 }]
+}
