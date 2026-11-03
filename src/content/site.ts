@@ -23,7 +23,6 @@ export const hero = {
     "Jednodenní workshop ve showroomu, materiály připravené v balíku a podpora, když je potřeba. Naučíte se nanášet stěrku s jistotou — na stěnu, kterou budete mít doma.",
   ctaWorkshop: { label: "Chci na workshop", href: "#kontakt" },
   ctaHow: { label: "Jak to funguje", href: "#jak-to-funguje" },
-  trustStrip: ["1 den", "Showroom", "Materiály v balíku", "Podpora"],
 };
 
 export const sterky = {
