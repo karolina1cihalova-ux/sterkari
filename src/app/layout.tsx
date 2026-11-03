@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
+import { LenisProvider } from "@/components/LenisProvider";
 import "./globals.css";
 
 const dmSans = DM_Sans({
   subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-dm-sans",
   display: "swap",
 });
@@ -21,7 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="cs" className={dmSans.variable}>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <LenisProvider>{children}</LenisProvider>
+      </body>
     </html>
   );
 }
