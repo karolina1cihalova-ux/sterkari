@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Fragment } from "react";
 import { hero } from "@/content/site";
 
 export function Hero() {
@@ -27,18 +28,24 @@ export function Hero() {
           </Link>
         </div>
 
-        <ul className="mt-14 flex flex-wrap gap-x-6 gap-y-3 text-sm font-medium text-neutral-700">
-          {hero.trustStrip.map((item, i) => (
-            <li key={item} className="flex items-center gap-2">
-              {i > 0 && (
-                <span className="hidden text-neutral-400 sm:inline" aria-hidden>
+        <div
+          className="mt-14 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-medium text-neutral-700"
+          aria-label="Proč nám věřit"
+        >
+          {hero.trustStrip.map((item, index) => (
+            <Fragment key={item}>
+              {index > 0 && (
+                <span
+                  className="select-none text-neutral-400 leading-none"
+                  aria-hidden="true"
+                >
                   ·
                 </span>
               )}
-              {item}
-            </li>
+              <span>{item}</span>
+            </Fragment>
           ))}
-        </ul>
+        </div>
       </div>
       <div id="hero-sentinel" className="absolute bottom-0 h-px w-full" aria-hidden />
     </section>
