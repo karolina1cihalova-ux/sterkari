@@ -47,7 +47,7 @@ export function Hero() {
         </p>
 
         <div data-hero-reveal className="mt-10 flex flex-wrap gap-4">
-          <CtaLink href={hero.ctaWorkshop.href} variant="accent">
+          <CtaLink href={hero.ctaWorkshop.href} variant="outline">
             {hero.ctaWorkshop.label}
           </CtaLink>
           <CtaLink href={hero.ctaHow.href} variant="outline">
