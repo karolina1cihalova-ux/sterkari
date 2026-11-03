@@ -54,17 +54,6 @@ export function Hero() {
             {hero.ctaHow.label}
           </CtaLink>
         </div>
-
-        <p
-          data-hero-reveal
-          className="mt-14 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-medium text-neutral-700"
-        >
-          {hero.trustStrip.map((item) => (
-            <span key={item} className="whitespace-nowrap">
-              {item}
-            </span>
-          ))}
-        </p>
       </div>
       <div id="hero-sentinel" className="absolute bottom-0 h-px w-full" aria-hidden />
     </section>
