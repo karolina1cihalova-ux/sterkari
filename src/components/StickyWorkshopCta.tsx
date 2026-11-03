@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
+import { CtaLink } from "@/components/CtaLink";
 import { primaryCta } from "@/content/navigation";
 
 export function StickyWorkshopCta() {
@@ -29,12 +29,13 @@ export function StickyWorkshopCta() {
       className="fixed inset-x-0 bottom-0 z-50 border-t border-neutral-200 bg-white/95 p-3 backdrop-blur-sm md:hidden"
       style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
     >
-      <Link
+      <CtaLink
         href={primaryCta.href}
-        className="block w-full rounded-full bg-charcoal py-3 text-center text-xs font-semibold tracking-wide text-white uppercase"
+        variant="charcoal"
+        className="block w-full px-5 py-3 text-center text-xs"
       >
         {primaryCta.label}
-      </Link>
+      </CtaLink>
     </div>
   );
 }
