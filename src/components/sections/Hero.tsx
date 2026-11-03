@@ -1,7 +1,7 @@
 "use client";
 
 import gsap from "gsap";
-import { Fragment, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { CtaLink } from "@/components/CtaLink";
 import { hero } from "@/content/site";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
@@ -55,25 +55,16 @@ export function Hero() {
           </CtaLink>
         </div>
 
-        <div
+        <p
           data-hero-reveal
-          className="mt-14 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-medium text-neutral-700"
-          aria-label="Proč nám věřit"
+          className="mt-14 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-medium text-neutral-700"
         >
-          {hero.trustStrip.map((item, index) => (
-            <Fragment key={item}>
-              {index > 0 && (
-                <span
-                  className="select-none text-neutral-400 leading-none"
-                  aria-hidden="true"
-                >
-                  ·
-                </span>
-              )}
-              <span>{item}</span>
-            </Fragment>
+          {hero.trustStrip.map((item) => (
+            <span key={item} className="whitespace-nowrap">
+              {item}
+            </span>
           ))}
-        </div>
+        </p>
       </div>
       <div id="hero-sentinel" className="absolute bottom-0 h-px w-full" aria-hidden />
     </section>
