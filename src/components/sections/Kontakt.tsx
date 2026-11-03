@@ -1,6 +1,8 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { CtaButton } from "@/components/CtaButton";
+import { SectionReveal } from "@/components/motion/SectionReveal";
 import { kontakt } from "@/content/site";
 
 type FormState = "idle" | "submitting" | "success" | "error";
@@ -40,8 +42,14 @@ export function Kontakt() {
     <section id="kontakt" className="scroll-mt-20 bg-warm py-16 md:py-24">
       <div className="mx-auto grid max-w-6xl gap-12 px-4 md:grid-cols-2 md:px-6">
         <div>
-          <h2 className="text-3xl font-bold text-charcoal md:text-4xl">{kontakt.title}</h2>
-          <p className="mt-3 text-neutral-600">{kontakt.subtitle}</p>
+          <SectionReveal>
+            <h2 data-reveal className="text-3xl font-bold text-charcoal md:text-4xl">
+              {kontakt.title}
+            </h2>
+            <p data-reveal className="mt-3 text-neutral-600">
+              {kontakt.subtitle}
+            </p>
+          </SectionReveal>
 
           <div className="mt-10 rounded-xl border border-neutral-200 bg-white p-6">
             <h3 className="font-bold text-charcoal">{kontakt.showroomTitle}</h3>
@@ -109,13 +117,14 @@ export function Kontakt() {
               className="mt-1 w-full rounded-lg border border-neutral-300 px-4 py-2.5 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
             />
           </div>
-          <button
+          <CtaButton
             type="submit"
             disabled={state === "submitting"}
-            className="w-full rounded-full bg-charcoal py-3 text-sm font-semibold text-white uppercase tracking-wide hover:opacity-90 disabled:opacity-60"
+            variant="charcoal"
+            className="w-full"
           >
             {state === "submitting" ? "Odesílám…" : kontakt.form.submit}
-          </button>
+          </CtaButton>
           {state === "success" && (
             <p className="text-sm font-medium text-green-700" role="status">
               {kontakt.form.success}
