@@ -21,6 +21,18 @@ npm run build
 npm start
 ```
 
+## Animace a UI knihovny
+
+- **GSAP** — `import gsap from "gsap"` v client komponentách (`"use client"`).
+- **Lenis** — smooth scroll je zapnutý v `LenisProvider` (`src/components/LenisProvider.tsx`); vypíná se při `prefers-reduced-motion: reduce`.
+- **React Bits** — registry je v `components.json`. Přidejte komponentu (TypeScript + Tailwind):
+
+  ```bash
+  npx shadcn@latest add @react-bits/SplitText-TS-TW
+  ```
+
+  Další komponenty a závislosti: [reactbits.dev](https://reactbits.dev/get-started/installation).
+
 ## Struktura
 
 - `src/content/site.ts` — české texty a data sekcí
