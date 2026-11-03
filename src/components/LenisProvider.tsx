@@ -2,6 +2,7 @@
 
 import { ReactLenis } from "lenis/react";
 import { useEffect, useState } from "react";
+import { LenisScrollTriggerSync } from "@/components/motion/LenisScrollTriggerSync";
 
 import "lenis/dist/lenis.css";
 
@@ -26,6 +27,7 @@ export function LenisProvider({ children }: LenisProviderProps) {
 
   return (
     <ReactLenis root options={{ autoRaf: true, anchors: true }}>
+      <LenisScrollTriggerSync />
       {children}
     </ReactLenis>
   );

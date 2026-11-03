@@ -1,15 +1,22 @@
 import Link from "next/link";
-import { navItems, primaryCta, wordmark } from "@/content/navigation";
+import { HeaderCta } from "@/components/HeaderCta";
+import { navItems, wordmark } from "@/content/navigation";
 
 export function Header() {
+  const wordmarkText = wordmark.endsWith(".") ? wordmark.slice(0, -1) : wordmark;
+
   return (
     <header className="sticky top-0 z-50 border-b border-neutral-200 bg-white">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-4 md:px-6">
         <Link
           href="#"
-          className="text-lg font-bold tracking-tight text-black uppercase md:text-xl"
+          className="font-extrabold tracking-[-0.04em] text-black uppercase md:text-[1.35rem] text-[1.15rem] leading-none"
+          style={{ fontWeight: 800 }}
         >
-          {wordmark}
+          {wordmarkText}
+          <span className="inline-block" aria-hidden="true">
+            .
+          </span>
         </Link>
 
         <nav
@@ -23,19 +30,14 @@ export function Header() {
                   ·
                 </span>
               )}
-              <Link href={item.href} className="hover:opacity-70">
+              <Link href={item.href} className="transition-opacity hover:opacity-70">
                 {item.label}
               </Link>
             </span>
           ))}
         </nav>
 
-        <Link
-          href={primaryCta.href}
-          className="rounded-full bg-charcoal px-5 py-2.5 text-xs font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90"
-        >
-          {primaryCta.label}
-        </Link>
+        <HeaderCta />
       </div>
 
       <nav

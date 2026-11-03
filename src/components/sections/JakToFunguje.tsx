@@ -1,11 +1,18 @@
+import { SectionReveal } from "@/components/motion/SectionReveal";
 import { jakToFunguje } from "@/content/site";
 
 export function JakToFunguje() {
   return (
     <section id="jak-to-funguje" className="scroll-mt-20 bg-warm py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-4 md:px-6">
-        <h2 className="text-3xl font-bold text-charcoal md:text-4xl">{jakToFunguje.title}</h2>
-        <p className="mt-3 max-w-2xl text-neutral-600">{jakToFunguje.subtitle}</p>
+        <SectionReveal>
+          <h2 data-reveal className="text-3xl font-bold text-charcoal md:text-4xl">
+            {jakToFunguje.title}
+          </h2>
+          <p data-reveal className="mt-3 max-w-2xl text-neutral-600">
+            {jakToFunguje.subtitle}
+          </p>
+        </SectionReveal>
 
         <ol className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {jakToFunguje.steps.map((step) => (
