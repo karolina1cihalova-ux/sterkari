@@ -3,6 +3,7 @@
 import { FormEvent, useState } from "react";
 import { CtaButton } from "@/components/CtaButton";
 import { SectionReveal } from "@/components/motion/SectionReveal";
+import { SectionShell } from "@/components/SectionShell";
 import { kontakt } from "@/content/site";
 
 type FormState = "idle" | "submitting" | "success" | "error";
@@ -40,27 +41,30 @@ export function Kontakt() {
 
   return (
     <section id="kontakt" className="scroll-mt-20 bg-warm py-16 md:py-24">
-      <div className="mx-auto grid max-w-6xl gap-12 px-4 md:grid-cols-2 md:px-6">
-        <div>
-          <SectionReveal>
-            <h2 data-reveal className="text-3xl font-bold text-charcoal md:text-4xl">
+      <SectionShell className="grid gap-12 md:grid-cols-2">
+        <div className="w-full text-left">
+          <SectionReveal className="w-full">
+            <h2 data-reveal className="text-left text-3xl font-bold text-charcoal md:text-4xl">
               {kontakt.title}
             </h2>
-            <p data-reveal className="mt-3 text-neutral-600">
+            <p data-reveal className="mt-3 max-w-prose text-left text-neutral-600">
               {kontakt.subtitle}
             </p>
           </SectionReveal>
 
-          <div className="mt-10 rounded-xl border border-neutral-200 bg-white p-6">
+          <div className="mt-10 w-full rounded-xl border border-neutral-200 bg-white p-6 text-left">
             <h3 className="font-bold text-charcoal">{kontakt.showroomTitle}</h3>
             <p className="mt-2 whitespace-pre-line text-sm text-neutral-600">
               {kontakt.showroomAddress}
             </p>
-            <div className="grain mt-4 aspect-video w-full rounded-lg bg-neutral-200" aria-hidden />
+            <div
+              className="grain mt-4 aspect-video w-full rounded-lg bg-neutral-200 object-left"
+              aria-hidden
+            />
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="w-full space-y-4 text-left">
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-charcoal">
               {kontakt.form.name}
@@ -69,7 +73,7 @@ export function Kontakt() {
               id="name"
               name="name"
               required
-              className="mt-1 w-full rounded-lg border border-neutral-300 px-4 py-2.5 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+              className="mt-1 w-full rounded-lg border border-neutral-300 px-4 py-2.5 transition-[border-color,box-shadow] duration-200 ease-out focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
             />
           </div>
           <div>
@@ -81,7 +85,7 @@ export function Kontakt() {
               name="email"
               type="email"
               required
-              className="mt-1 w-full rounded-lg border border-neutral-300 px-4 py-2.5 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+              className="mt-1 w-full rounded-lg border border-neutral-300 px-4 py-2.5 transition-[border-color,box-shadow] duration-200 ease-out focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
             />
           </div>
           <div>
@@ -92,7 +96,7 @@ export function Kontakt() {
               id="phone"
               name="phone"
               type="tel"
-              className="mt-1 w-full rounded-lg border border-neutral-300 px-4 py-2.5 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+              className="mt-1 w-full rounded-lg border border-neutral-300 px-4 py-2.5 transition-[border-color,box-shadow] duration-200 ease-out focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
             />
           </div>
           <div>
@@ -102,7 +106,7 @@ export function Kontakt() {
             <input
               id="preferredDate"
               name="preferredDate"
-              className="mt-1 w-full rounded-lg border border-neutral-300 px-4 py-2.5 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+              className="mt-1 w-full rounded-lg border border-neutral-300 px-4 py-2.5 transition-[border-color,box-shadow] duration-200 ease-out focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
             />
           </div>
           <div>
@@ -114,14 +118,14 @@ export function Kontakt() {
               name="message"
               required
               rows={4}
-              className="mt-1 w-full rounded-lg border border-neutral-300 px-4 py-2.5 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+              className="mt-1 w-full rounded-lg border border-neutral-300 px-4 py-2.5 transition-[border-color,box-shadow] duration-200 ease-out focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
             />
           </div>
           <CtaButton
             type="submit"
             disabled={state === "submitting"}
             variant="charcoal"
-            className="w-full"
+            className="self-start"
           >
             {state === "submitting" ? "Odesílám…" : kontakt.form.submit}
           </CtaButton>
@@ -136,7 +140,7 @@ export function Kontakt() {
             </p>
           )}
         </form>
-      </div>
+      </SectionShell>
     </section>
   );
 }
