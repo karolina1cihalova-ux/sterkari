@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { SectionReveal } from "@/components/motion/SectionReveal";
+import { SectionShell } from "@/components/SectionShell";
 import { inspirace } from "@/content/site";
 
 type FilterId = (typeof inspirace.filters)[number]["id"];
@@ -16,17 +17,21 @@ export function Inspirace() {
 
   return (
     <section id="inspirace" className="scroll-mt-20 bg-warm py-16 md:py-24">
-      <div className="mx-auto max-w-6xl px-4 md:px-6">
-        <SectionReveal>
-          <h2 data-reveal className="text-3xl font-bold text-charcoal md:text-4xl">
+      <SectionShell>
+        <SectionReveal className="w-full">
+          <h2 data-reveal className="text-left text-3xl font-bold text-charcoal md:text-4xl">
             {inspirace.title}
           </h2>
-          <p data-reveal className="mt-3 max-w-2xl text-neutral-600">
+          <p data-reveal className="mt-3 max-w-prose text-left text-neutral-600">
             {inspirace.subtitle}
           </p>
         </SectionReveal>
 
-        <div className="mt-8 flex flex-wrap gap-2" role="tablist" aria-label="Filtr místností">
+        <div
+          className="mt-8 flex flex-wrap justify-start gap-2"
+          role="tablist"
+          aria-label="Filtr místností"
+        >
           {inspirace.filters.map((f) => {
             const active = filter === f.id;
             return (
@@ -36,7 +41,7 @@ export function Inspirace() {
                 role="tab"
                 aria-selected={active}
                 onClick={() => setFilter(f.id)}
-                className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
+                className={`rounded-full px-4 py-2 text-sm font-semibold transition-[background-color,color] duration-200 ease-out ${
                   active
                     ? "bg-accent text-white"
                     : "bg-white text-charcoal hover:bg-neutral-100"
@@ -48,24 +53,24 @@ export function Inspirace() {
           })}
         </div>
 
-        <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-10 grid w-full gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((item) => (
-            <li key={item.id} className="overflow-hidden rounded-xl bg-white shadow-sm">
+            <li key={item.id} className="overflow-hidden rounded-xl bg-white text-left shadow-sm">
               <div className="grid grid-cols-2 gap-0.5">
                 <div
-                  className="grain aspect-[3/4] bg-neutral-300"
+                  className="grain aspect-[3/4] bg-neutral-300 object-left"
                   aria-label={`${item.title} — před`}
                 />
                 <div
-                  className="grain aspect-[3/4] bg-neutral-400"
+                  className="grain aspect-[3/4] bg-neutral-400 object-left"
                   aria-label={`${item.title} — po`}
                 />
               </div>
-              <p className="p-4 text-sm font-medium text-charcoal">{item.title}</p>
+              <p className="p-4 text-left text-sm font-medium text-charcoal">{item.title}</p>
             </li>
           ))}
         </ul>
-      </div>
+      </SectionShell>
     </section>
   );
 }

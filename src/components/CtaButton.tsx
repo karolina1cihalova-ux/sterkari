@@ -1,12 +1,6 @@
 "use client";
 
-import gsap from "gsap";
-import {
-  type ButtonHTMLAttributes,
-  useCallback,
-  useRef,
-} from "react";
-import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+import { type ButtonHTMLAttributes } from "react";
 
 type CtaButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: "charcoal" | "accent";
@@ -24,50 +18,12 @@ export function CtaButton({
   className = "",
   type = "button",
   children,
-  onMouseEnter,
-  onMouseLeave,
-  onMouseDown,
-  onMouseUp,
   ...props
 }: CtaButtonProps) {
-  const ref = useRef<HTMLButtonElement>(null);
-  const reduceMotion = usePrefersReducedMotion();
-
-  const pop = useCallback(
-    (scale: number, y: number) => {
-      if (reduceMotion || !ref.current) return;
-      gsap.to(ref.current, {
-        scale,
-        y,
-        duration: 0.28,
-        ease: "power2.out",
-        overwrite: "auto",
-      });
-    },
-    [reduceMotion],
-  );
-
   return (
     <button
-      ref={ref}
       type={type}
-      className={`rounded-full py-3 text-sm font-semibold uppercase tracking-wide transition-[box-shadow,opacity] will-change-transform disabled:opacity-60 ${variantClasses[variant]} ${className}`}
-      onMouseEnter={(e) => {
-        pop(1.03, -1);
-        onMouseEnter?.(e);
-      }}
-      onMouseLeave={(e) => {
-        pop(1, 0);
-        onMouseLeave?.(e);
-      }}
-      onMouseDown={(e) => {
-        pop(0.97, 0);
-        onMouseDown?.(e);
-      }}
-      onMouseUp={(e) => {
-        pop(1.03, -1);
-        onMouseUp?.(e);
-      }}
+      className={`rounded-full px-8 py-3 text-sm font-semibold uppercase tracking-wide transition-[box-shadow,transform] duration-200 ease-out active:scale-[0.97] motion-reduce:active:scale-100 disabled:opacity-60 ${variantClasses[variant]} ${className}`}
       {...props}
     >
       {children}

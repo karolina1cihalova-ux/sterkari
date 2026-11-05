@@ -22,18 +22,18 @@ export function SectionReveal({ children, className }: SectionRevealProps) {
     const targets = rootRef.current.querySelectorAll("[data-reveal]");
     if (!targets.length) return;
 
-    gsap.set(targets, { opacity: 0, y: 32 });
+    gsap.set(targets, { opacity: 0, y: 24 });
 
     const trigger = ScrollTrigger.create({
       trigger: rootRef.current,
-      start: "top 82%",
+      start: "top 85%",
       once: true,
       onEnter: () => {
         gsap.to(targets, {
           opacity: 1,
           y: 0,
-          duration: 0.75,
-          stagger: 0.1,
+          duration: 0.65,
+          stagger: 0.04,
           ease: "power3.out",
         });
       },

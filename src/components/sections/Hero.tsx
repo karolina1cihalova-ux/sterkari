@@ -3,6 +3,7 @@
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import { CtaLink } from "@/components/CtaLink";
+import { SectionShell } from "@/components/SectionShell";
 import { hero } from "@/content/site";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
@@ -17,11 +18,11 @@ export function Hero() {
       const targets = sectionRef.current!.querySelectorAll("[data-hero-reveal]");
       gsap.from(targets, {
         opacity: 0,
-        y: 36,
-        duration: 0.9,
-        stagger: 0.12,
+        y: 32,
+        duration: 0.85,
+        stagger: 0.1,
         ease: "power3.out",
-        delay: 0.08,
+        delay: 0.06,
       });
     }, sectionRef);
 
@@ -30,10 +31,10 @@ export function Hero() {
 
   return (
     <section ref={sectionRef} className="relative bg-warm">
-      <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24">
+      <SectionShell className="py-16 md:py-24">
         <h1
           data-hero-reveal
-          className="max-w-3xl text-4xl font-bold tracking-tight text-charcoal md:text-5xl lg:text-6xl"
+          className="max-w-3xl text-left text-4xl font-bold tracking-tight text-charcoal md:text-5xl lg:text-6xl"
         >
           {hero.sloganLine1}
           <br />
@@ -41,12 +42,12 @@ export function Hero() {
         </h1>
         <p
           data-hero-reveal
-          className="mt-6 max-w-2xl text-lg text-neutral-600 md:text-xl"
+          className="mt-6 max-w-prose text-left text-lg text-neutral-600 md:text-xl"
         >
           {hero.subtitle}
         </p>
 
-        <div data-hero-reveal className="mt-10 flex flex-wrap gap-4">
+        <div data-hero-reveal className="mt-10 flex flex-wrap justify-start gap-4">
           <CtaLink href={hero.ctaWorkshop.href} variant="outline">
             {hero.ctaWorkshop.label}
           </CtaLink>
@@ -54,7 +55,7 @@ export function Hero() {
             {hero.ctaHow.label}
           </CtaLink>
         </div>
-      </div>
+      </SectionShell>
       <div id="hero-sentinel" className="absolute bottom-0 h-px w-full" aria-hidden />
     </section>
   );

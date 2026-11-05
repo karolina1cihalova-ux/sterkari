@@ -7,7 +7,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-neutral-200 bg-white">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-4 md:px-6">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-4">
         <Link
           href="#"
           className="font-extrabold tracking-[-0.04em] text-black uppercase md:text-[1.35rem] text-[1.15rem] leading-none"
